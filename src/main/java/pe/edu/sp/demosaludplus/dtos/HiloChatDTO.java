@@ -1,4 +1,4 @@
-package pe.edu.upc.demoSaludPlusNuevo.dtos;
+package pe.edu.sp.demosaludplus.dtos;
 
 import java.util.List;
 
