@@ -33,4 +33,4 @@ public interface CitasMedicasRepository extends JpaRepository<CitasMedicas, Inte
     Page<CitasMedicas> buscarPorUsuarioYEstado(@Param("idUsuario") Integer idUsuario,
                                                @Param("estado") String estado,
                                                Pageable pageable);
-}git
+}

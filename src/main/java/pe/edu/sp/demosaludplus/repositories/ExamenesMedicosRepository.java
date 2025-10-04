@@ -3,7 +3,7 @@ package pe.edu.sp.demosaludplus.repositories;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.query.Param;
-import pe.edu.upc.demoSaludPlusNuevo.entities.ExamenesMedicos;
+import pe.edu.sp.demosaludplus.Entities.ExamenesMedicos;
 
 import java.util.List;
 
