@@ -1,23 +1,14 @@
-package pe.edu.sp.demosaludplus.servicesinterfaces;
+package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
 
-import pe.edu.sp.demosaludplus.Entities.CitasPresenciales;
-
+import pe.edu.upc.demoSaludPlusNuevo.entities.CitasPresenciales;
 import java.util.List;
 
 public interface ICitasPresencialesService {
     public List<CitasPresenciales> list();
-
-    public void insert(CitasPresenciales citasPresenciales);
-
+    public void insert(CitasPresenciales c);
     public CitasPresenciales listId(int id);
-
+    public void update(CitasPresenciales c);
     public void delete(int id);
 
-    public void update(CitasPresenciales citasPresenciales);
-    public List<Object[]> mostrarEstadoDeCitas();
-    public List<Object[]> cantidadCitasPresencialesPorEstado();
-    public List<Object[]> cantidadMedicosPorConsultorio();
-    public List<Object[]> cantidadCitasPorConsultorio();
-    public List<Object[]> cantidadCitasPorMedicoAsignado();
-
+    public CitasPresenciales findByCita(int idCita);
 }

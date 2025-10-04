@@ -1,17 +1,12 @@
-package pe.edu.sp.demosaludplus.servicesinterfaces;
+package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
 
-import org.springframework.data.repository.query.Param;
-import pe.edu.sp.demosaludplus.Entities.Roles;
-
+import pe.edu.upc.demoSaludPlusNuevo.entities.Roles;
 import java.util.List;
 
 public interface IRolesService {
-    public List<Roles>list();
-    public void insert(Roles roles);
-
+    public List<Roles> list();
+    public void insert(Roles r);
     public Roles listId(int id);
+    public void update(Roles r);
     public void delete(int id);
-    public void update(Roles roles);
-    public int contarUsuariosPorRol(@Param("rol") String rol);
-
 }

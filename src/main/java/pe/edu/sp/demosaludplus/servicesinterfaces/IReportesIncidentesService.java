@@ -1,21 +1,15 @@
-package pe.edu.sp.demosaludplus.servicesinterfaces;
+package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
 
-import org.springframework.data.repository.query.Param;
-import pe.edu.sp.demosaludplus.Entities.ReportesIncidentes;
-
+import pe.edu.upc.demoSaludPlusNuevo.entities.ReportesIncidentes;
 import java.time.LocalDate;
 import java.util.List;
 
-
 public interface IReportesIncidentesService {
     public List<ReportesIncidentes> list();
-    public void insert(ReportesIncidentes reportesIncidentes);
+    public void insert(ReportesIncidentes r);
+    public ReportesIncidentes listId(int id);
+    public void update(ReportesIncidentes r);
+    public void delete(int id);
 
-    public ReportesIncidentes list(int idReporte);
-    public void delete(int idReporte);
-    public void update(ReportesIncidentes reportesIncidentes);
-    public List<ReportesIncidentes> buscarBigDataReportes(String nReportes);
-    public List<ReportesIncidentes> buscarPorFecha(@Param("fecha") LocalDate fecha);
-    public List<Object[]> cantidadIncidentesPorLugar();
-
+    public List<ReportesIncidentes> searchByTipoYFecha(String tipo, LocalDate desde, LocalDate hasta);
 }

@@ -1,58 +1,36 @@
-package pe.edu.sp.demosaludplus.servicesimplements;
+package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.sp.demosaludplus.Entities.CitasVideollamadas;
-import pe.edu.sp.demosaludplus.Repositories.ICitasVideollamadasRepository;
-import pe.edu.sp.demosaludplus.servicesinterfaces.ICitasVideollamadasService;
+import pe.edu.upc.demoSaludPlusNuevo.entities.CitasVideollamadas;
+import pe.edu.upc.demoSaludPlusNuevo.repositories.CitasVideollamadasRepository;
+import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.ICitasVideollamadasService;
 
 import java.util.List;
+
 @Service
 public class CitasVideollamadasServiceImplement implements ICitasVideollamadasService {
+
     @Autowired
-    private ICitasVideollamadasRepository cV;
-    @Override
-    public List<CitasVideollamadas> list() {
-        return cV.findAll();
-    }
+    private CitasVideollamadasRepository repository;
 
     @Override
-    public void insert(CitasVideollamadas citasVideollamadas) {
-        cV.save(citasVideollamadas);
-    }
+    public List<CitasVideollamadas> list() { return repository.findAll(); }
 
     @Override
-    public CitasVideollamadas listId(int id) {
-        return cV.findById(id).orElse(null);
-    }
+    public void insert(CitasVideollamadas c) { repository.save(c); }
 
     @Override
-    public void delete(int id) {
-        cV.deleteById(id);
-    }
+    public CitasVideollamadas listId(int id) { return repository.findById(id).orElse(null); }
 
     @Override
-    public void update(CitasVideollamadas citasVideollamadas) {
-        cV.save(citasVideollamadas);
-    }
+    public void update(CitasVideollamadas c) { repository.save(c); }
 
     @Override
-    public List<CitasVideollamadas> buscarCitasPorEstado(String estado) {
-        return cV.buscarCitasPorEstado(estado);
-    }
+    public void delete(int id) { repository.deleteById(id); }
 
     @Override
-    public List<Object[]> obtenerEstadoYPlataformaDeCitasVideoLlamadas() {
-        return cV.obtenerEstadoYPlataformaDeCitasVideoLlamadas();
-    }
-
-    @Override
-    public List<Object[]> mostrarEstadoDeCitasVideoLlamadas() {
-        return cV.mostrarEstadoDeCitasVideoLlamadas();
-    }
-
-    @Override
-    public List<Object[]> cantidadCitasVideollamadasPorEstado() {
-        return cV.cantidadCitasVideollamadasPorEstado();
+    public CitasVideollamadas findByCita(int idCita) {
+        return repository.findByIdCita(idCita).orElse(null);
     }
 }
