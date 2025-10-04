@@ -1,10 +1,10 @@
-package pe.edu.upc.demoSaludPlusNuevo.repositories;
+package pe.edu.sp.demosaludplus.repositories;
 
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.query.Param;
-import pe.edu.upc.demoSaludPlusNuevo.entities.CitasMedicas;
+import pe.edu.sp.demosaludplus.Entities.CitasMedicas;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -33,4 +33,4 @@ public interface CitasMedicasRepository extends JpaRepository<CitasMedicas, Inte
     Page<CitasMedicas> buscarPorUsuarioYEstado(@Param("idUsuario") Integer idUsuario,
                                                @Param("estado") String estado,
                                                Pageable pageable);
-}
+}git

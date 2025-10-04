@@ -1,9 +1,9 @@
-package pe.edu.upc.demoSaludPlusNuevo.repositories;
+package pe.edu.sp.demosaludplus.repositories;
 
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.query.Param;
-import pe.edu.upc.demoSaludPlusNuevo.entities.CitasPresenciales;
+import pe.edu.sp.demosaludplus.Entities.CitasPresenciales;
 
 import java.util.Optional;
 
