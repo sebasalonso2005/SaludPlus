@@ -1,4 +1,4 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
+package pe.edu.sp.demosaludplus.servicesinterfaces;
 
 import pe.edu.upc.demoSaludPlusNuevo.entities.CitasMedicas;
 import java.time.LocalDate;

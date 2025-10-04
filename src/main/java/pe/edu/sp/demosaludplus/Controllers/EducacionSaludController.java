@@ -28,5 +28,6 @@ public class EducacionSaludController {
         ModelMapper m = new ModelMapper();
         EducacionSalud eduS=m.map(e, EducacionSalud.class);
         eS.insert(eduS);
+
     }
 }
