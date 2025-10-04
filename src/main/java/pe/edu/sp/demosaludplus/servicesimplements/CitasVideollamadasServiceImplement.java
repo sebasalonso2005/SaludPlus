@@ -2,9 +2,10 @@ package pe.edu.sp.demosaludplus.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.sp.demosaludplus.servicesinterfaces.ICitasVideollamadasService;
 import pe.edu.upc.demoSaludPlusNuevo.entities.CitasVideollamadas;
 import pe.edu.upc.demoSaludPlusNuevo.repositories.CitasVideollamadasRepository;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.ICitasVideollamadasService;
+
 
 import java.util.List;
 

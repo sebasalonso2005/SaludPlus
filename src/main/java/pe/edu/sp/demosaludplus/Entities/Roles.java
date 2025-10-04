@@ -1,4 +1,4 @@
-package pe.edu.upc.demoSaludPlusNuevo.entities;
+package pe.edu.sp.demosaludplus.Entities;
 
 import jakarta.persistence.*;
 

@@ -2,6 +2,7 @@ package pe.edu.sp.demosaludplus.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.sp.demosaludplus.servicesinterfaces.ICitasPresencialesService;
 import pe.edu.upc.demoSaludPlusNuevo.entities.CitasPresenciales;
 import pe.edu.upc.demoSaludPlusNuevo.repositories.CitasPresencialesRepository;
 import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.ICitasPresencialesService;
