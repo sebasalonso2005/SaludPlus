@@ -1,4 +1,4 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesimplements; // O donde tengas tus servicios
+package pe.edu.sp.demosaludplus.servicesimplements; // O donde tengas tus servicios
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
