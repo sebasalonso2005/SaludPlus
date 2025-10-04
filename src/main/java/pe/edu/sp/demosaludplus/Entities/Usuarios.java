@@ -1,4 +1,4 @@
-package pe.edu.sp.demosaludplus.Entities;
+package pe.edu.upc.demoSaludPlusNuevo.entities;
 
 import jakarta.persistence.*;
 
@@ -42,7 +42,7 @@ public class Usuarios {
     @Column(name = "username", nullable = false, length = 30)
     private String username;
 
-    @Column(name = "password", nullable = false, length = 20)
+    @Column(name = "password", nullable = false, length = 200)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -139,5 +139,12 @@ public class Usuarios {
     public void setPassword(String password) {
         this.password = password;
     }
-}
 
+    public Set<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
+    }
+}

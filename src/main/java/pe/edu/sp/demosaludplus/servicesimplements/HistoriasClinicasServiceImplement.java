@@ -1,53 +1,36 @@
-package pe.edu.sp.demosaludplus.servicesimplements;
+package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.sp.demosaludplus.Entities.HistoriasClinicas;
-import pe.edu.sp.demosaludplus.Repositories.IHistoriasClinicasRepository;
-import pe.edu.sp.demosaludplus.servicesinterfaces.IHistoriasClinicasService;
+import pe.edu.upc.demoSaludPlusNuevo.entities.HistoriasClinicas;
+import pe.edu.upc.demoSaludPlusNuevo.repositories.HistoriasClinicasRepository;
+import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IHistoriasClinicasService;
 
 import java.util.List;
+
 @Service
 public class HistoriasClinicasServiceImplement implements IHistoriasClinicasService {
+
     @Autowired
-    private IHistoriasClinicasRepository hC;
-    @Override
-    public List<HistoriasClinicas> list() {
-        return hC.findAll();
-    }
+    private HistoriasClinicasRepository repository;
 
     @Override
-    public void insert(HistoriasClinicas historiasClinicas) {
-        hC.save(historiasClinicas);
-    }
+    public List<HistoriasClinicas> list() { return repository.findAll(); }
 
     @Override
-    public HistoriasClinicas listId(int id) {
-        return hC.findById(id).orElse(null);
-    }
+    public void insert(HistoriasClinicas h) { repository.save(h); }
 
     @Override
-    public void delete(int id) {
-        hC.deleteById(id);
-    }
+    public HistoriasClinicas listId(int id) { return repository.findById(id).orElse(null); }
 
     @Override
-    public void update(HistoriasClinicas historiasClinicas) {
-        hC.save(historiasClinicas);
-    }
+    public void update(HistoriasClinicas h) { repository.save(h); }
 
     @Override
-    public int contarPorEnfermedadCronica(String enfermedad) {
-        return hC.contarPorEnfermedadCronica(enfermedad);
-    }
+    public void delete(int id) { repository.deleteById(id); }
 
     @Override
-    public List<HistoriasClinicas> buscarPorDiagnostico(String diagnostico) {
-        return hC.buscarPorDiagnostico(diagnostico);
-    }
-
-    @Override
-    public List<Object[]> contarPorFechaCreacion() {
-        return hC.contarPorFechaCreacion();
+    public HistoriasClinicas findByCita(int idCita) {
+        return repository.findByIdCita(idCita).orElse(null);
     }
 }

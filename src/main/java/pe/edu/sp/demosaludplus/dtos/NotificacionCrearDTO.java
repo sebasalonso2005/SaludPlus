@@ -1,4 +1,4 @@
-package pe.edu.sp.demosaludplus.dtos;
+package pe.edu.upc.demoSaludPlusNuevo.dtos;
 
 public class NotificacionCrearDTO {
     private String titulo;

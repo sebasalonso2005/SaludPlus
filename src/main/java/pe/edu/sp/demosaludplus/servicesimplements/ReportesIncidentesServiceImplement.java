@@ -1,61 +1,37 @@
-package pe.edu.sp.demosaludplus.servicesimplements;
-
+package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pe.edu.sp.demosaludplus.Entities.ReportesIncidentes;
-import pe.edu.sp.demosaludplus.Repositories.IReportesIncidentesRepository;
-import pe.edu.sp.demosaludplus.servicesinterfaces.IReportesIncidentesService;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.demoSaludPlusNuevo.entities.ReportesIncidentes;
+import pe.edu.upc.demoSaludPlusNuevo.repositories.ReportesIncidentesRepository;
+import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IReportesIncidentesService;
 
 import java.time.LocalDate;
 import java.util.List;
 
-
 @Service
 public class ReportesIncidentesServiceImplement implements IReportesIncidentesService {
+
     @Autowired
-    private IReportesIncidentesRepository rI;
-    @Override
-    public List<ReportesIncidentes> list() {
-        return rI.findAll();
-    }
+    private ReportesIncidentesRepository repository;
 
     @Override
-    public void insert(ReportesIncidentes reportesIncidentes) {
-        rI.save(reportesIncidentes);
-    }
+    public List<ReportesIncidentes> list() { return repository.findAll(); }
 
     @Override
-    public ReportesIncidentes list(int idReporte) {
-        return rI.findById(idReporte).orElse(null);
-    }
+    public void insert(ReportesIncidentes r) { repository.save(r); }
 
     @Override
-    public void delete(int idReporte) {
-        rI.deleteById(idReporte);
-    }
+    public ReportesIncidentes listId(int id) { return repository.findById(id).orElse(null); }
 
     @Override
-    public void update(ReportesIncidentes reportesIncidentes) {
-        rI.save(reportesIncidentes);
-    }
+    public void update(ReportesIncidentes r) { repository.save(r); }
 
     @Override
-    public List<ReportesIncidentes> buscarBigDataReportes(String nReportes) { //PREGUNTAR 
-        return List.of();
-    }
+    public void delete(int id) { repository.deleteById(id); }
 
     @Override
-    public List<ReportesIncidentes> buscarPorFecha(LocalDate fecha) {
-        return rI.buscarPorFecha(fecha);
+    public List<ReportesIncidentes> searchByTipoYFecha(String tipo, LocalDate desde, LocalDate hasta) {
+        return repository.buscarPorTipoYFecha(tipo, desde, hasta);
     }
-
-    @Override
-    public List<Object[]> cantidadIncidentesPorLugar() {
-        return rI.cantidadIncidentesPorLugar();
-    }
-
-
 }
-
-

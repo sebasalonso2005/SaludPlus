@@ -1,18 +1,14 @@
-package pe.edu.sp.demosaludplus.servicesinterfaces;
+package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
 
-import org.springframework.data.repository.query.Param;
-import pe.edu.sp.demosaludplus.Entities.Usuarios;
-
+import pe.edu.upc.demoSaludPlusNuevo.entities.Usuarios;
 import java.util.List;
-import java.util.Optional;
 
 public interface IUsuariosService {
-    public List<Usuarios>list();
-    public void insert(Usuarios usuarios);
-
+    public List<Usuarios> list();
+    public void insert(Usuarios u);
     public Usuarios listId(int id);
+    public void update(Usuarios u);
     public void delete(int id);
-    public void update(Usuarios usuarios);
-    public Usuarios buscarPorId(@Param("idUsuario") Integer idUsuario);
-    public Optional<Usuarios> buscarPorDni(@Param("dni") String dni);
+
+    public List<Usuarios> searchByComunidad(String comunidad);
 }

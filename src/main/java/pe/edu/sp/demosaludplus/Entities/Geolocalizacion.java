@@ -1,4 +1,4 @@
-package pe.edu.sp.demosaludplus.Entities;
+package pe.edu.upc.demoSaludPlusNuevo.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -81,6 +81,3 @@ public class Geolocalizacion {
         this.usuario = usuario;
     }
 }
-
-
-

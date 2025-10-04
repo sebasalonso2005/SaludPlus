@@ -1,19 +1,14 @@
-package pe.edu.sp.demosaludplus.servicesinterfaces;
+package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
 
-import org.springframework.data.repository.query.Param;
-import pe.edu.sp.demosaludplus.Entities.Medicamentos;
-
+import pe.edu.upc.demoSaludPlusNuevo.entities.Medicamentos;
 import java.util.List;
 
 public interface IMedicamentosService {
-    public List<Medicamentos>list();
-    public void insert(Medicamentos medicamentos);
-
+    public List<Medicamentos> list();
+    public void insert(Medicamentos m);
     public Medicamentos listId(int id);
+    public void update(Medicamentos m);
     public void delete(int id);
-    public void update(Medicamentos medicamentos);
-    public List<Medicamentos> buscarPorNombre(@Param("nombre") String nombre);
-    public List<Medicamentos> buscarPorDosis(@Param("dosis") String dosis);
-    public List<Object[]> contarMedicamentosPorDuracion();
 
+    public List<Medicamentos> listByCita(int idCita);
 }

@@ -1,53 +1,36 @@
-package pe.edu.sp.demosaludplus.servicesimplements;
+package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.sp.demosaludplus.Entities.Geolocalizacion;
-import pe.edu.sp.demosaludplus.Repositories.IGeolocalizacionRepository;
-import pe.edu.sp.demosaludplus.servicesinterfaces.IGeolocalizacionService;
+import pe.edu.upc.demoSaludPlusNuevo.entities.Geolocalizacion;
+import pe.edu.upc.demoSaludPlusNuevo.repositories.GeolocalizacionRepository;
+import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IGeolocalizacionService;
 
 import java.util.List;
+
 @Service
 public class GeolocalizacionServiceImplement implements IGeolocalizacionService {
+
     @Autowired
-    private IGeolocalizacionRepository gG;
-    @Override
-    public List<Geolocalizacion> list() {
-        return gG.findAll();
-    }
+    private GeolocalizacionRepository repository;
 
     @Override
-    public void insert(Geolocalizacion geolocalizacion) {
-        gG.save(geolocalizacion);
-    }
+    public List<Geolocalizacion> list() { return repository.findAll(); }
 
     @Override
-    public Geolocalizacion listId(int id) {
-        return gG.findById(id).orElse(null);
-    }
+    public void insert(Geolocalizacion g) { repository.save(g); }
 
     @Override
-    public void delete(int id) {
-        gG.deleteById(id);
-    }
+    public Geolocalizacion listId(int id) { return repository.findById(id).orElse(null); }
 
     @Override
-    public void update(Geolocalizacion geolocalizacion) {
-        gG.save(geolocalizacion);
-    }
+    public void update(Geolocalizacion g) { repository.save(g); }
 
     @Override
-    public List<Geolocalizacion> buscarPorTipo(String tipo) {
-        return gG.buscarPorTipo(tipo);
-    }
+    public void delete(int id) { repository.deleteById(id); }
 
     @Override
-    public List<Object[]> contarPorFecha() {
-        return gG.contarPorFecha();
-    }
-
-    @Override
-    public int contarUsuariosUnicos() {
-        return gG.contarUsuariosUnicos();
+    public Geolocalizacion findByUsuario(int idUsuario) {
+        return repository.findByUsuarioIdUsuario(idUsuario).orElse(null);
     }
 }

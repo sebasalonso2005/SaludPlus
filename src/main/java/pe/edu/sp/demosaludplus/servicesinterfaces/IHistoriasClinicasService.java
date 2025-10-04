@@ -1,19 +1,14 @@
-package pe.edu.sp.demosaludplus.servicesinterfaces;
+package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
 
-import org.springframework.data.repository.query.Param;
-import pe.edu.sp.demosaludplus.Entities.HistoriasClinicas;
-
+import pe.edu.upc.demoSaludPlusNuevo.entities.HistoriasClinicas;
 import java.util.List;
 
 public interface IHistoriasClinicasService {
-    public List<HistoriasClinicas>list();
-    public void insert(HistoriasClinicas historiasClinicas);
-
+    public List<HistoriasClinicas> list();
+    public void insert(HistoriasClinicas h);
     public HistoriasClinicas listId(int id);
+    public void update(HistoriasClinicas h);
     public void delete(int id);
-    public void update(HistoriasClinicas historiasClinicas);
-    public int contarPorEnfermedadCronica(@Param("enfermedad") String enfermedad);
-    public List<HistoriasClinicas> buscarPorDiagnostico(@Param("diagnostico") String diagnostico);
-    public List<Object[]> contarPorFechaCreacion();
 
+    public HistoriasClinicas findByCita(int idCita);
 }

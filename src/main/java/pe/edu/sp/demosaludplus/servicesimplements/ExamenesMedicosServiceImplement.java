@@ -1,59 +1,36 @@
-package pe.edu.sp.demosaludplus.servicesimplements;
+package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.sp.demosaludplus.Entities.ExamenesMedicos;
-import pe.edu.sp.demosaludplus.Repositories.IExamenesMedicosRepository;
-import pe.edu.sp.demosaludplus.servicesinterfaces.IExamenesMedicosService;
+import pe.edu.upc.demoSaludPlusNuevo.entities.ExamenesMedicos;
+import pe.edu.upc.demoSaludPlusNuevo.repositories.ExamenesMedicosRepository;
+import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IExamenesMedicosService;
 
-import java.time.LocalDate;
 import java.util.List;
+
 @Service
 public class ExamenesMedicosServiceImplement implements IExamenesMedicosService {
+
     @Autowired
-    private IExamenesMedicosRepository eM;
-    @Override
-    public List<ExamenesMedicos> list() {
-        return eM.findAll();
-    }
+    private ExamenesMedicosRepository repository;
 
     @Override
-    public void insert(ExamenesMedicos examenesMedicos) {
-        eM.save(examenesMedicos);
-    }
+    public List<ExamenesMedicos> list() { return repository.findAll(); }
 
     @Override
-    public ExamenesMedicos listId(int id) {
-        return eM.findById(id).orElse(null);
-    }
+    public void insert(ExamenesMedicos e) { repository.save(e); }
 
     @Override
-    public void delete(int id) {
-        eM.deleteById(id);
-    }
+    public ExamenesMedicos listId(int id) { return repository.findById(id).orElse(null); }
 
     @Override
-    public void update(ExamenesMedicos examenesMedicos) {
-        eM.save(examenesMedicos);
-    }
+    public void update(ExamenesMedicos e) { repository.save(e); }
 
     @Override
-    public List<ExamenesMedicos> buscarPorTipo(String tipoExamen) {
-        return eM.buscarPorTipo(tipoExamen);
-    }
+    public void delete(int id) { repository.deleteById(id); }
 
     @Override
-    public List<Object[]> contarPorFecha(LocalDate fecha) {
-        return eM.contarPorFecha(fecha);
-    }
-
-    @Override
-    public List<Object[]> contarExamenesPorTipo() {
-        return eM.contarExamenesPorTipo();
-    }
-
-    @Override
-    public List<Object[]> contarExamenesPorArchivoUrl() {
-        return eM.contarExamenesPorArchivoUrl();
+    public List<ExamenesMedicos> listByCita(int idCita) {
+        return repository.listarPorCita(idCita);
     }
 }

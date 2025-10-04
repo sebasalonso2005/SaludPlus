@@ -1,37 +1,37 @@
-package pe.edu.sp.demosaludplus.Entities;
+package pe.edu.upc.demoSaludPlusNuevo.entities;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "ReportesIncidentes")
-
 public class ReportesIncidentes {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_reporte;
 
-    @Column(name = "tipoIncidente", nullable = false , length = 50 )
+    @Column(name = "tipoIncidente", nullable = false, length = 50)
     private String tipoIncidente;
 
-    @Column(name = "descripcion" , nullable = false , length = 50)
+    @Column(name = "descripcion", nullable = false, length = 50)
     private String descripcion;
 
-    @Column(name = "fecha" , nullable = false)
+    @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
-    @Column(name = "hora" , nullable = false )
+    @Column(name = "hora", nullable = false)
     private LocalTime hora;
 
-    @Column (name = "lugarIncidente", nullable = false, length = 30 )
+    @Column(name = "lugarIncidente", nullable = false, length = 30)
     private String lugarIncidente;
 
     public ReportesIncidentes() {
     }
 
-    public ReportesIncidentes(int id_reporte, String tipoIncidente, String descripcion, LocalDate fecha, LocalTime hora, String lugarIncidente) {
+    public ReportesIncidentes(int id_reporte, String tipoIncidente, String descripcion,
+                              LocalDate fecha, LocalTime hora, String lugarIncidente) {
         this.id_reporte = id_reporte;
         this.tipoIncidente = tipoIncidente;
         this.descripcion = descripcion;
