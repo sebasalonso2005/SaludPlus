@@ -1,6 +1,6 @@
 package pe.edu.sp.demosaludplus.servicesinterfaces;
 
-import pe.edu.upc.demoSaludPlusNuevo.entities.Usuarios;
+import pe.edu.sp.demosaludplus.Entities.Usuarios;
 import java.util.List;
 
 public interface IUsuariosService {

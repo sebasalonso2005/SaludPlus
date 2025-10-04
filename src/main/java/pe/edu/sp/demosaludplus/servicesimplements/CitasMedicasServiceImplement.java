@@ -4,9 +4,9 @@ package pe.edu.sp.demosaludplus.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.sp.demosaludplus.servicesinterfaces.ICitasMedicasService;
-import pe.edu.upc.demoSaludPlusNuevo.entities.CitasMedicas;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.CitasMedicasRepository;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.ICitasMedicasService;
+import pe.edu.sp.demosaludplus.Entities.CitasMedicas;
+import pe.edu.sp.demosaludplus.repositories.CitasMedicasRepository;
+import pe.edu.sp.demosaludplus.servicesinterfaces.ICitasMedicasService;
 
 import java.time.LocalDate;
 import java.util.List;

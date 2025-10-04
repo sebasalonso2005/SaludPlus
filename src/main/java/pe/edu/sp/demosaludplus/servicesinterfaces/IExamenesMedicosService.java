@@ -1,6 +1,6 @@
 package pe.edu.sp.demosaludplus.servicesinterfaces;
 
-import pe.edu.upc.demoSaludPlusNuevo.entities.ExamenesMedicos;
+import pe.edu.sp.demosaludplus.Entities.ExamenesMedicos;
 import java.util.List;
 
 public interface IExamenesMedicosService {

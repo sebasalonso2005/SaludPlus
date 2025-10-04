@@ -2,9 +2,9 @@ package pe.edu.sp.demosaludplus.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Roles;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.RolesRepository;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IRolesService;
+import pe.edu.sp.demosaludplus.Entities.Roles;
+import pe.edu.sp.demosaludplus.repositories.RolesRepository;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IRolesService;
 
 import java.util.List;
 

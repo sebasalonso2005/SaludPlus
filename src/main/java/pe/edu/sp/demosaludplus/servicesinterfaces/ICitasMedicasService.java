@@ -1,6 +1,6 @@
 package pe.edu.sp.demosaludplus.servicesinterfaces;
 
-import pe.edu.upc.demoSaludPlusNuevo.entities.CitasMedicas;
+import pe.edu.sp.demosaludplus.Entities.CitasMedicas;
 import java.time.LocalDate;
 import java.util.List;
 

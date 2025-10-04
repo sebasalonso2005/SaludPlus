@@ -1,6 +1,6 @@
 package pe.edu.sp.demosaludplus.servicesinterfaces;
 
-import pe.edu.upc.demoSaludPlusNuevo.entities.Roles;
+import pe.edu.sp.demosaludplus.Entities.Roles;
 import java.util.List;
 
 public interface IRolesService {

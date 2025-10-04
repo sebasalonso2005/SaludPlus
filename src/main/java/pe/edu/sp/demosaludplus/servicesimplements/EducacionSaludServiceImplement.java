@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.edu.sp.demosaludplus.Entities.EducacionSalud;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.EducacionSaludRepository;
+import pe.edu.sp.demosaludplus.repositories.EducacionSaludRepository;
 import pe.edu.sp.demosaludplus.servicesinterfaces.IEducacionSaludService;
 
 

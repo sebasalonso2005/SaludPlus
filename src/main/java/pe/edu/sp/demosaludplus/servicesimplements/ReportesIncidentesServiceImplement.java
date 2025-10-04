@@ -2,9 +2,9 @@ package pe.edu.sp.demosaludplus.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoSaludPlusNuevo.entities.ReportesIncidentes;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.ReportesIncidentesRepository;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IReportesIncidentesService;
+import pe.edu.sp.demosaludplus.Entities.ReportesIncidentes;
+import pe.edu.sp.demosaludplus.repositories.ReportesIncidentesRepository;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IReportesIncidentesService;
 
 import java.time.LocalDate;
 import java.util.List;

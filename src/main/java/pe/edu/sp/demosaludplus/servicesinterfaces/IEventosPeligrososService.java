@@ -1,6 +1,6 @@
 package pe.edu.sp.demosaludplus.servicesinterfaces;
 
-import pe.edu.upc.demoSaludPlusNuevo.entities.EventosPeligrosos;
+import pe.edu.sp.demosaludplus.Entities.EventosPeligrosos;
 import java.time.LocalDateTime;
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package pe.edu.sp.demosaludplus.servicesinterfaces;
 
-import pe.edu.upc.demoSaludPlusNuevo.entities.HistoriasClinicas;
+import pe.edu.sp.demosaludplus.Entities.HistoriasClinicas;
 import java.util.List;
 
 public interface IHistoriasClinicasService {
