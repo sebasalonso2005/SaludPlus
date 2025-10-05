@@ -1,6 +1,7 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
+package pe.edu.sp.demosaludplus.servicesinterfaces;
 
-import pe.edu.upc.demoSaludPlusNuevo.entities.Notificaciones;
+import pe.edu.sp.demosaludplus.Entities.Notificaciones;
+
 import java.util.List;
 
 public interface INotificacionesService {

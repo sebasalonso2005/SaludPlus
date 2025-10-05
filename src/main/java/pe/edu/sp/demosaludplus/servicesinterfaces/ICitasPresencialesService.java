@@ -1,6 +1,7 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces;
+package pe.edu.sp.demosaludplus.servicesinterfaces;
 
-import pe.edu.upc.demoSaludPlusNuevo.entities.CitasPresenciales;
+import pe.edu.sp.demosaludplus.Entities.CitasPresenciales;
+
 import java.util.List;
 
 public interface ICitasPresencialesService {
