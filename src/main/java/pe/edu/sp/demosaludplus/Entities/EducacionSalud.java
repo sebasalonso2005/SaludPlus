@@ -1,6 +1,5 @@
 package pe.edu.sp.demosaludplus.Entities;
 
-
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

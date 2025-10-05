@@ -1,8 +1,6 @@
 package pe.edu.sp.demosaludplus.Entities;
 
 import jakarta.persistence.*;
-import pe.edu.sp.demosaludplus.Entities.Usuarios;
-
 import java.time.LocalDateTime;
 
 @Entity

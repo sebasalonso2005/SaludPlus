@@ -3,48 +3,45 @@ package pe.edu.sp.demosaludplus.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.sp.demosaludplus.Entities.Notificaciones;
-import pe.edu.sp.demosaludplus.Repositories.INotificacionesRepository;
+import pe.edu.sp.demosaludplus.repositories.NotificacionesRepository;
 import pe.edu.sp.demosaludplus.servicesinterfaces.INotificacionesService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class NotificacionesServiceImplement implements INotificacionesService {
+
     @Autowired
-    private INotificacionesRepository nN;
+    private NotificacionesRepository repository;
+
     @Override
-    public List<Notificaciones> list() {
-        return nN.findAll();
+    public List<Notificaciones> list() { return repository.findAll(); }
+
+    @Override
+    public void insert(Notificaciones n) { repository.save(n); }
+
+    @Override
+    public Notificaciones listId(int id) { return repository.findById(id).orElse(null); }
+
+    @Override
+    public void update(Notificaciones n) { repository.save(n); }
+
+    @Override
+    public void delete(int id) { repository.deleteById(id); }
+
+    @Override
+    public List<Notificaciones> listByUsuario(int idUsuario) {
+        // últimas 20 ordenadas por fecha
+        return repository.findTop20ByUsuarioIdUsuarioOrderByFechaEnvioDesc(idUsuario);
     }
 
     @Override
-    public void insert(Notificaciones notificaciones) {
-        nN.save(notificaciones);
+    public List<Notificaciones> listNoLeidas(int idUsuario) {
+        return repository.listarNoLeidas(idUsuario);
     }
 
     @Override
-    public Notificaciones listId(int id) {
-        return nN.findById(id).orElse(null);
-    }
-
-    @Override
-    public void delete(int id) {
-        nN.deleteById(id);
-    }
-
-    @Override
-    public void update(Notificaciones notificaciones) {
-        nN.save(notificaciones);
-    }
-
-    @Override
-    public Optional<Notificaciones> buscarPorIdNotificaciones(Integer idNotificacion) {
-        return nN.buscarPorIdNotificaciones(idNotificacion);
-    }
-
-    @Override
-    public List<String[]> cantidadNotificacionesPorUsuario(Integer idUsuario) {
-        return nN.cantidadNotificacionesPorUsuario(idUsuario);
+    public long countNoLeidas(int idUsuario) {
+        return repository.countByUsuarioIdUsuarioAndLeidoFalse(idUsuario);
     }
 }

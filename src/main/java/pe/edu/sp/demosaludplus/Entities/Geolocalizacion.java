@@ -81,6 +81,3 @@ public class Geolocalizacion {
         this.usuario = usuario;
     }
 }
-
-
-

@@ -36,7 +36,7 @@ public class CitasMedicas {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
-            name = "id_usuario",        // nombre exacto de la FK en tu diagrama
+            name = "id_usuario",
             referencedColumnName = "id_usuario",
             nullable = false
     )
@@ -128,4 +128,3 @@ public class CitasMedicas {
         this.usuario = usuario;
     }
 }
-
