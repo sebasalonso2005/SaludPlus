@@ -1,16 +1,15 @@
-package pe.edu.upc.demoSaludPlusNuevo.repositories;
+package pe.edu.sp.demosaludplus.repositories;
 
-import org.springframework.data.jpa.repository.*;
-import org.springframework.stereotype.Repository;
-import org.springframework.data.domain.*;
-import org.springframework.data.repository.query.Param;
-import pe.edu.upc.demoSaludPlusNuevo.entities.EventosPeligrosos;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import pe.edu.sp.demosaludplus.Entities.EventosPeligrosos;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
 
 @Repository
 public interface EventosPeligrososRepository extends JpaRepository<EventosPeligrosos, Integer> {

@@ -1,8 +1,8 @@
-package pe.edu.upc.demoSaludPlusNuevo.repositories;
+package pe.edu.sp.demosaludplus.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Roles;
+import pe.edu.sp.demosaludplus.Entities.Roles;
 
 import java.util.Collection;
 import java.util.List;

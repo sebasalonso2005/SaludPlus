@@ -1,12 +1,10 @@
-package pe.edu.upc.demoSaludPlusNuevo.repositories;
+package pe.edu.sp.demosaludplus.repositories;
 
-import org.springframework.data.jpa.repository.*;
-import org.springframework.stereotype.Repository;
-import org.springframework.data.domain.*;
-import pe.edu.upc.demoSaludPlusNuevo.entities.EducacionSalud;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import pe.edu.sp.demosaludplus.Entities.EducacionSalud;
 
 import java.time.LocalDate;
 
