@@ -1,93 +1,109 @@
 package pe.edu.sp.demosaludplus.Controllers;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+import pe.edu.sp.demosaludplus.dtos.CitaDetalleDTO;
 import pe.edu.sp.demosaludplus.Entities.CitasMedicas;
+import pe.edu.sp.demosaludplus.dtos.CitaCrearDTO;
+import pe.edu.sp.demosaludplus.dtos.CitaListaDTO;
 import pe.edu.sp.demosaludplus.servicesinterfaces.ICitasMedicasService;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/citasMedicas")
+@RequestMapping("/citas")
 public class CitasMedicasController {
 
-
     @Autowired
-    private ICitasMedicasService citasService;
+    private ICitasMedicasService service;
 
-    // 1) Citas médicas ACTIVAS
-    // GET: /citas-medicas/activas
-    @GetMapping("/activas")
-    public ResponseEntity<List<CitasMedicas>> obtenerCitasMedicasActivas() {
-        List<CitasMedicas> lista = citasService.obtenerCitasMedicasActivas();
-        if (lista == null || lista.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
-        }
-        return ResponseEntity.ok(lista);
+    @GetMapping
+    public List<CitaListaDTO> listar() {
+        return service.list().stream().map(c -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(c, CitaListaDTO.class);
+        }).collect(Collectors.toList());
     }
 
-    // 2) Cantidad de citas PRESENCIALES por ESTADO
-    // GET: /citas-medicas/contar/presenciales-por-estado
-    @GetMapping("/contar/presenciales-por-estado")
-    public ResponseEntity<List<Map<String, Object>>> cantidadCitasPresencialesPorEstado() {
-        List<Object[]> filas = citasService.cantidadCitasPresencialesPorEstado();
-        if (filas == null || filas.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
-        }
-        List<Map<String, Object>> out = new ArrayList<>();
-        for (Object[] row : filas) {
-            // Supuesto: row[0] = estado, row[1] = total
-            Map<String, Object> m = new HashMap<>();
-            m.put("estado", String.valueOf(row[0]));
-            m.put("total", ((Number) row[1]).intValue());
-            out.add(m);
-        }
-        return ResponseEntity.ok(out);
+    @PostMapping
+    public void registrar(@RequestBody CitaCrearDTO dto) {
+        ModelMapper m = new ModelMapper();
+        CitasMedicas c = m.map(dto, CitasMedicas.class);
+        service.insert(c);
     }
 
-    // 3) Buscar citas por ID de usuario
-    // GET: /citas-medicas/usuario/{idUsuario}
+    @GetMapping("/{id}")
+    public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
+        CitasMedicas c = service.listId(id);
+        if (c == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existe una cita con ID: " + id);
+        }
+        ModelMapper m = new ModelMapper();
+        return ResponseEntity.ok(m.map(c, CitaDetalleDTO.class));
+    }
+
+    @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public ResponseEntity<String> modificar(@RequestBody CitaDetalleDTO dto) {
+        ModelMapper m = new ModelMapper();
+        CitasMedicas c = m.map(dto, CitasMedicas.class);
+        CitasMedicas existente = service.listId(c.getId_cita());
+        if (existente == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existe una cita con ID: " + c.getId_cita());
+        }
+        service.update(c);
+        return ResponseEntity.ok("Cita " + c.getId_cita() + " modificada correctamente.");
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
+        CitasMedicas c = service.listId(id);
+        if (c == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existe una cita con ID: " + id);
+        }
+        service.delete(id);
+        return ResponseEntity.ok("Cita con ID " + id + " eliminada correctamente.");
+    }
+
     @GetMapping("/usuario/{idUsuario}")
-    public ResponseEntity<List<CitasMedicas>> buscarCitasPorIdUsuario(@PathVariable("idUsuario") Integer idUsuario) {
-        List<CitasMedicas> lista = citasService.buscarCitasPorIdUsuario(idUsuario);
-        if (lista == null || lista.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public ResponseEntity<?> listarPorUsuario(@PathVariable Integer idUsuario) {
+        List<CitasMedicas> lista = service.listByUsuario(idUsuario);
+        if (lista.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("El usuario " + idUsuario + " no tiene citas registradas.");
         }
-        return ResponseEntity.ok(lista);
+        List<CitaListaDTO> dtos = lista.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, CitaListaDTO.class);
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
     }
 
-    // 4) Cantidad de usuarios con cita en FECHA (YYYY-MM-DD)
-    // GET: /citas-medicas/contar/usuarios-por-fecha/2025-09-23
-    @GetMapping("/contar/usuarios-por-fecha/{fecha}")
-    public ResponseEntity<List<Map<String, Object>>> cantidadUsuariosConCitaEnFecha(@PathVariable String fecha) {
-        LocalDate f;
-        try {
-            f = LocalDate.parse(fecha); // formato ISO yyyy-MM-dd
-        } catch (DateTimeParseException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.emptyList());
+    @GetMapping("/busquedas")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public ResponseEntity<?> buscarPorUsuarioYFechas(@RequestParam Integer idUsuario,
+                                                     @RequestParam LocalDate desde,
+                                                     @RequestParam LocalDate hasta) {
+        List<CitasMedicas> lista = service.searchByUsuarioAndFecha(idUsuario, desde, hasta);
+        if (lista.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No hay citas para el usuario " + idUsuario + " en el rango indicado.");
         }
-
-        List<Object[]> filas = citasService.cantidadUsuariosConCitaEnFecha(f);
-        if (filas == null || filas.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
-        }
-
-        List<Map<String, Object>> out = new ArrayList<>();
-        for (Object[] row : filas) {
-            // Supuesto común: row[0] = fecha o criterio, row[1] = total usuarios
-            Map<String, Object> m = new HashMap<>();
-            m.put("criterio", String.valueOf(row[0]));
-            m.put("totalUsuarios", ((Number) row[1]).intValue());
-            out.add(m);
-        }
-        return ResponseEntity.ok(out);
+        List<CitaListaDTO> dtos = lista.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, CitaListaDTO.class);
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
     }
-
 }

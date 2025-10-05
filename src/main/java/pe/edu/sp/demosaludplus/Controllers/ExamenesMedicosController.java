@@ -1,91 +1,91 @@
 package pe.edu.sp.demosaludplus.Controllers;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+import pe.edu.sp.demosaludplus.Entities.ExamenesMedicos;
+import pe.edu.sp.demosaludplus.dtos.ExamenCrearDTO;
+import pe.edu.sp.demosaludplus.dtos.ExamenDTO;
 import pe.edu.sp.demosaludplus.servicesinterfaces.IExamenesMedicosService;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/examenesMedicos")
+@RequestMapping("/examenes")
 public class ExamenesMedicosController {
 
     @Autowired
-    private IExamenesMedicosService examenesService;
+    private IExamenesMedicosService service;
 
-    // 1) Contar por fecha (enviada en la URL como YYYY-MM-DD)
-    // GET: /examenes/contar/fecha/2025-09-23
-    @GetMapping("/contar/fecha/{fecha}")
-    public ResponseEntity<List<Map<String, Object>>> contarPorFecha(@PathVariable String fecha) {
-        LocalDate fechaLD;
-        try {
-            fechaLD = LocalDate.parse(fecha); // formato: 2025-09-23
-        } catch (DateTimeParseException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(Collections.emptyList());
-        }
-
-        List<Object[]> filas = examenesService.contarPorFecha(fechaLD);
-        if (filas == null || filas.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
-        }
-
-        List<Map<String, Object>> out = new ArrayList<>();
-        for (Object[] row : filas) {
-            // Suposición común: row[0] = criterio (p.ej., tipoExamen), row[1] = total
-            Map<String, Object> m = new HashMap<>();
-            m.put("criterio", String.valueOf(row[0]));
-            m.put("total", ((Number) row[1]).intValue());
-            out.add(m);
-        }
-        return ResponseEntity.ok(out);
+    @GetMapping
+    public List<ExamenDTO> listar() {
+        return service.list().stream().map(e -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(e, ExamenDTO.class);
+        }).collect(Collectors.toList());
     }
 
-    // 2) Contar exámenes por TIPO
-    // GET: /examenes/contar/tipo
-    @GetMapping("/contar/tipo")
-    public ResponseEntity<List<Map<String, Object>>> contarExamenesPorTipo() {
-        List<Object[]> filas = examenesService.contarExamenesPorTipo();
-        if (filas == null || filas.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
-        }
-
-        List<Map<String, Object>> out = new ArrayList<>();
-        for (Object[] row : filas) {
-            // Suposición: row[0] = tipoExamen, row[1] = total
-            Map<String, Object> m = new HashMap<>();
-            m.put("tipoExamen", String.valueOf(row[0]));
-            m.put("total", ((Number) row[1]).intValue());
-            out.add(m);
-        }
-        return ResponseEntity.ok(out);
+    @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public void registrar(@RequestBody ExamenCrearDTO dto) {
+        ModelMapper m = new ModelMapper();
+        ExamenesMedicos e = m.map(dto, ExamenesMedicos.class);
+        service.insert(e);
     }
 
-    // 3) Contar exámenes por ARCHIVO URL
-    // GET: /examenes/contar/archivo-url
-    @GetMapping("/contar/archivo-url")
-    public ResponseEntity<List<Map<String, Object>>> contarExamenesPorArchivoUrl() {
-        List<Object[]> filas = examenesService.contarExamenesPorArchivoUrl();
-        if (filas == null || filas.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
+    @GetMapping("/{id}")
+    public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
+        ExamenesMedicos e = service.listId(id);
+        if (e == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existe un examen con ID: " + id);
         }
-
-        List<Map<String, Object>> out = new ArrayList<>();
-        for (Object[] row : filas) {
-            // Suposición: row[0] = archivoUrl (o flag), row[1] = total
-            Map<String, Object> m = new HashMap<>();
-            m.put("archivoUrl", String.valueOf(row[0]));
-            m.put("total", ((Number) row[1]).intValue());
-            out.add(m);
-        }
-        return ResponseEntity.ok(out);
+        ModelMapper m = new ModelMapper();
+        return ResponseEntity.ok(m.map(e, ExamenDTO.class));
     }
 
+    @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public ResponseEntity<String> modificar(@RequestBody ExamenDTO dto) {
+        ModelMapper m = new ModelMapper();
+        ExamenesMedicos e = m.map(dto, ExamenesMedicos.class);
+        ExamenesMedicos existente = service.listId(e.getIdExamen());
+        if (existente == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existe un examen con ID: " + e.getIdExamen());
+        }
+        service.update(e);
+        return ResponseEntity.ok("Examen " + e.getIdExamen() + " modificado correctamente.");
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
+        ExamenesMedicos e = service.listId(id);
+        if (e == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existe un examen con ID: " + id);
+        }
+        service.delete(id);
+        return ResponseEntity.ok("Examen con ID " + id + " eliminado correctamente.");
+    }
+
+    @GetMapping("/cita/{idCita}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public ResponseEntity<?> listarPorCita(@PathVariable Integer idCita) {
+        List<ExamenesMedicos> lista = service.listByCita(idCita);
+        if (lista.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("La cita " + idCita + " no tiene exámenes registrados.");
+        }
+        List<ExamenDTO> dtos = lista.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, ExamenDTO.class);
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
+    }
 }
