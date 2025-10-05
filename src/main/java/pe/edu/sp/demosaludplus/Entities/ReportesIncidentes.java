@@ -1,6 +1,7 @@
-package pe.edu.upc.demoSaludPlusNuevo.entities;
+package pe.edu.sp.demosaludplus.Entities;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
