@@ -4,6 +4,8 @@ public class InicioSesionSolicitudDTO {
     private String usernameOrEmail;
     private String password;
 
+    public InicioSesionSolicitudDTO() {}
+
     public InicioSesionSolicitudDTO(String usernameOrEmail, String password) {
         this.usernameOrEmail = usernameOrEmail;
         this.password = password;

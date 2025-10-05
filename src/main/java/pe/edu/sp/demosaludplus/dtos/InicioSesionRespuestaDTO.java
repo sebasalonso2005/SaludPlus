@@ -5,6 +5,8 @@ public class InicioSesionRespuestaDTO {
     private String tokenType;
     private Long expiresInSeconds;
 
+    public InicioSesionRespuestaDTO() {}
+
     public InicioSesionRespuestaDTO(String accessToken, String tokenType, Long expiresInSeconds) {
         this.accessToken = accessToken;
         this.tokenType = tokenType;

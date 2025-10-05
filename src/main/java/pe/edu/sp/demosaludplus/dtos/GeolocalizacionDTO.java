@@ -9,6 +9,8 @@ public class GeolocalizacionDTO {
     private LocalDateTime fecha;
     private Integer idUsuario;
 
+    public GeolocalizacionDTO() {}
+
     public GeolocalizacionDTO(Integer idGeolocalizacion, Double latitud, Double longitud, LocalDateTime fecha, Integer idUsuario) {
         this.idGeolocalizacion = idGeolocalizacion;
         this.latitud = latitud;

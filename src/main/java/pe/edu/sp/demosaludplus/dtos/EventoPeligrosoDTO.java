@@ -9,6 +9,8 @@ public class EventoPeligrosoDTO {
     private LocalDateTime fecha;
     private Integer idUsuario;
 
+    public EventoPeligrosoDTO() {}
+
     public EventoPeligrosoDTO(Integer idEvento, String tipo, String descripcion, LocalDateTime fecha, Integer idUsuario) {
         this.idEvento = idEvento;
         this.tipo = tipo;

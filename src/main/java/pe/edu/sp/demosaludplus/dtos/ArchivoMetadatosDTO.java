@@ -6,6 +6,8 @@ public class ArchivoMetadatosDTO {
     private String url;
     private Long tamanoBytes;
 
+    public ArchivoMetadatosDTO() {}
+
     public ArchivoMetadatosDTO(String id, String nombre, String url, Long tamanoBytes) {
         this.id = id;
         this.nombre = nombre;

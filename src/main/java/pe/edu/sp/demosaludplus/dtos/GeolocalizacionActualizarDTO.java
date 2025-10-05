@@ -7,6 +7,8 @@ public class GeolocalizacionActualizarDTO {
     private Double longitud;
     private LocalDateTime fecha;
 
+    public GeolocalizacionActualizarDTO() {}
+
     public GeolocalizacionActualizarDTO(Double latitud, Double longitud, LocalDateTime fecha) {
         this.latitud = latitud;
         this.longitud = longitud;

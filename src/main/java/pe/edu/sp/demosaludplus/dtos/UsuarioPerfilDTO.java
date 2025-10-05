@@ -10,6 +10,9 @@ public class UsuarioPerfilDTO {
     private String comunidad;
     private String username;
 
+
+    public UsuarioPerfilDTO() {}
+
     public UsuarioPerfilDTO(Integer idUsuario, String nombre, String dni, String correo, String telefono, String direccion, String comunidad, String username) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;

@@ -7,6 +7,9 @@ public class SOSSolictudDTO {
     private Integer idUsuario;
     private String direccionTexto;
 
+    public SOSSolictudDTO() {}
+
+
     public SOSSolictudDTO(Double latitud, Double longitud, Double precisionMetros, Integer idUsuario, String direccionTexto) {
         this.latitud = latitud;
         this.longitud = longitud;

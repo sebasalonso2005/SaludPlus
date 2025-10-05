@@ -9,6 +9,8 @@ public class NotificacionDTO {
     private LocalDateTime fechaEnvio;
     private Boolean leido;
 
+    public NotificacionDTO() {}
+
     public NotificacionDTO(Integer idNotificacion, String titulo, String mensaje, LocalDateTime fechaEnvio, Boolean leido) {
         this.idNotificacion = idNotificacion;
         this.titulo = titulo;

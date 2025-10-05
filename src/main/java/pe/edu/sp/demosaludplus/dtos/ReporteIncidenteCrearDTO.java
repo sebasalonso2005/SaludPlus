@@ -10,6 +10,8 @@ public class ReporteIncidenteCrearDTO {
     private LocalTime hora;
     private String lugarIncidente;
 
+    public ReporteIncidenteCrearDTO() {}
+
     public ReporteIncidenteCrearDTO(String tipoIncidente, String descripcion, LocalDate fecha, LocalTime hora, String lugarIncidente) {
         this.tipoIncidente = tipoIncidente;
         this.descripcion = descripcion;

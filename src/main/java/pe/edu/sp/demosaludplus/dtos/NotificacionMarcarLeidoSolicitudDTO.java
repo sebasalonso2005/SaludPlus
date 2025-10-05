@@ -4,6 +4,8 @@ public class NotificacionMarcarLeidoSolicitudDTO {
     private Integer idNotificacion;
     private Boolean leido;
 
+    public NotificacionMarcarLeidoSolicitudDTO() {}
+
     public NotificacionMarcarLeidoSolicitudDTO(Integer idNotificacion, Boolean leido) {
         this.idNotificacion = idNotificacion;
         this.leido = leido;

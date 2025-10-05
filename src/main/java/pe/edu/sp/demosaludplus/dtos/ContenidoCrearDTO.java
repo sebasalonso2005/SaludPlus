@@ -9,6 +9,8 @@ public class ContenidoCrearDTO {
     private LocalDate fechaPublicacion;
     private Integer idOrganizacion;
 
+    public ContenidoCrearDTO() {}
+
     public ContenidoCrearDTO(Integer tipo, String titulo, String description, LocalDate fechaPublicacion, Integer idOrganizacion) {
         this.tipo = tipo;
         this.titulo = titulo;

@@ -5,6 +5,8 @@ public class CitaActualizarEstadoDTO {
     private String nuevoEstado;
     private String observacion;
 
+    public CitaActualizarEstadoDTO() {}
+
     public CitaActualizarEstadoDTO(Integer idCita, String nuevoEstado, String observacion) {
         this.idCita = idCita;
         this.nuevoEstado = nuevoEstado;

@@ -7,6 +7,9 @@ public class HiloChatDTO {
     private String titulo;
     private List<MensajeChatDTO> mensajes;
 
+    public HiloChatDTO() {}
+
+
     public HiloChatDTO(String id, String titulo, List<MensajeChatDTO> mensajes) {
         this.id = id;
         this.titulo = titulo;

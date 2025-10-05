@@ -11,6 +11,8 @@ public class CitaListaDTO {
     private String estado;
     private Integer duracionMin;
 
+    public CitaListaDTO() {}
+
     public CitaListaDTO(Integer idCita, LocalDate fechaCita, LocalDateTime hora, String tipo, String estado, Integer duracionMin) {
         this.idCita = idCita;
         this.fechaCita = fechaCita;

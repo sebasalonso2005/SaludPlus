@@ -9,6 +9,8 @@ public class ExamenDTO {
     private String resultado;
     private String archivoUrl;
 
+    public ExamenDTO() {}
+
     public ExamenDTO(Integer idExamen, String tipoExamen, LocalDate fecha, String resultado, String archivoUrl) {
         this.idExamen = idExamen;
         this.tipoExamen = tipoExamen;

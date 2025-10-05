@@ -10,6 +10,8 @@ public class ContenidoSaludDTO {
     private LocalDate fechaPublicacion;
     private Integer idOrganizacion;
 
+    public  ContenidoSaludDTO() {}
+
     public ContenidoSaludDTO(Integer idEdu, Integer tipo, String titulo, String description, LocalDate fechaPublicacion, Integer idOrganizacion) {
         this.idEdu = idEdu;
         this.tipo = tipo;

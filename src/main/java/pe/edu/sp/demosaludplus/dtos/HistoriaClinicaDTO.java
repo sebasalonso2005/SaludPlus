@@ -16,6 +16,8 @@ public class HistoriaClinicaDTO {
     private List<MedicamentoDTO> medicamentos;
     private List<ExamenDTO> examenes;
 
+    public HistoriaClinicaDTO() {}
+
     public Integer getIdHistoria() { return idHistoria; }
     public void setIdHistoria(Integer idHistoria) { this.idHistoria = idHistoria; }
     public LocalDateTime getFechaCreacion() { return fechaCreacion; }

@@ -12,6 +12,8 @@ public class CitaVideollamadaDTO {
     private LocalDateTime iniciaEn;
     private LocalDateTime finalizaEn;
 
+    public CitaVideollamadaDTO() {}
+
     public CitaVideollamadaDTO(Integer idVideollamada, String enlaceUrl, String codigoAcceso, String plataforma, String estado, LocalDateTime programadaEn, LocalDateTime iniciaEn, LocalDateTime finalizaEn) {
         this.idVideollamada = idVideollamada;
         this.enlaceUrl = enlaceUrl;

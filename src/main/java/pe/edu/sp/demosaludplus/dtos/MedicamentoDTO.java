@@ -7,6 +7,8 @@ public class MedicamentoDTO {
     private String frecuencia;
     private String duracion;
 
+    public MedicamentoDTO() {}
+
     public MedicamentoDTO(Integer idMedicamento, String nombre, String dosis, String frecuencia, String duracion) {
         this.idMedicamento = idMedicamento;
         this.nombre = nombre;
@@ -14,6 +16,8 @@ public class MedicamentoDTO {
         this.frecuencia = frecuencia;
         this.duracion = duracion;
     }
+
+
 
     public Integer getIdMedicamento() { return idMedicamento; }
     public void setIdMedicamento(Integer idMedicamento) { this.idMedicamento = idMedicamento; }

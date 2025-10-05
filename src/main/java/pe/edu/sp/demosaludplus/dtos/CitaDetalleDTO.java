@@ -16,6 +16,8 @@ public class CitaDetalleDTO {
     private CitaPresencialDTO presencial;
     private CitaVideollamadaDTO videollamada;
 
+    public CitaDetalleDTO() {}
+
     public CitaDetalleDTO(Integer idCita, LocalDate fechaCita, LocalDateTime hora, String tipo, String estado, String motivo, LocalDateTime creadaEn, Integer duracionMin, Integer idUsuario, CitaPresencialDTO presencial, CitaVideollamadaDTO videollamada) {
         this.idCita = idCita;
         this.fechaCita = fechaCita;

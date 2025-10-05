@@ -11,6 +11,10 @@ public class ReporteIncidenteDTO {
     private LocalTime hora;
     private String lugarIncidente;
 
+
+    public ReporteIncidenteDTO() {}
+
+
     public Integer getIdReporte() { return idReporte; }
     public void setIdReporte(Integer idReporte) { this.idReporte = idReporte; }
     public String getTipoIncidente() { return tipoIncidente; }

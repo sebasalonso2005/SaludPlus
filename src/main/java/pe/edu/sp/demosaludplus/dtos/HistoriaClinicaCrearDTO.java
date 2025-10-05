@@ -12,6 +12,8 @@ public class HistoriaClinicaCrearDTO {
     private String diagnosticos;
     private String tratamientos;
 
+    public HistoriaClinicaCrearDTO() {}
+
     public HistoriaClinicaCrearDTO(Integer idCita, LocalDateTime fechaCreacion, String alergias, String antecedentes, String enfermedadesCronicas, String detalle, String diagnosticos, String tratamientos) {
         this.idCita = idCita;
         this.fechaCreacion = fechaCreacion;

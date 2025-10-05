@@ -12,6 +12,8 @@ public class CitaPresencialDTO {
     private LocalDateTime iniciaEn;
     private LocalDateTime finalizaEn;
 
+    public CitaPresencialDTO() {}
+
     public CitaPresencialDTO(Integer idPresencial, String direccion, String consultorio, String medicoAsignado, String estado, LocalDateTime programadaEn, LocalDateTime iniciaEn, LocalDateTime finalizaEn) {
         this.idPresencial = idPresencial;
         this.direccion = direccion;

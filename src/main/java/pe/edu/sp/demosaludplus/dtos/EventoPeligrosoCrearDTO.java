@@ -8,6 +8,8 @@ public class EventoPeligrosoCrearDTO {
     private LocalDateTime fecha;
     private Integer idUsuario;
 
+    public EventoPeligrosoCrearDTO() {}
+
     public EventoPeligrosoCrearDTO(String tipo, String descripcion, LocalDateTime fecha, Integer idUsuario) {
         this.tipo = tipo;
         this.descripcion = descripcion;

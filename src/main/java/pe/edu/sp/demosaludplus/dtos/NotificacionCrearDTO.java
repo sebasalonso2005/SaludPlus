@@ -5,6 +5,8 @@ public class NotificacionCrearDTO {
     private String mensaje;
     private Integer idUsuario;
 
+    public NotificacionCrearDTO() {}
+
     public NotificacionCrearDTO(String titulo, String mensaje, Integer idUsuario) {
         this.titulo = titulo;
         this.mensaje = mensaje;

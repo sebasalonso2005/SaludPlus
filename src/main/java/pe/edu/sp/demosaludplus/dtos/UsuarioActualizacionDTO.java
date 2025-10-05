@@ -6,6 +6,9 @@ public class UsuarioActualizacionDTO {
     private String direccion;
     private String comunidad;
 
+    public UsuarioActualizacionDTO() {}
+
+
     public UsuarioActualizacionDTO(String nombre, String telefono, String direccion, String comunidad) {
         this.nombre = nombre;
         this.telefono = telefono;

@@ -10,6 +10,9 @@ public class UsuarioRegistroDTO {
     private String username;
     private String password;
 
+
+    public UsuarioRegistroDTO() {}
+
     public UsuarioRegistroDTO(String nombre, String dni, String correo, String telefono, String direccion, String comunidad, String username, String password) {
         this.nombre = nombre;
         this.dni = dni;

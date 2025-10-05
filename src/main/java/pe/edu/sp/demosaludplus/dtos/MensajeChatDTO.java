@@ -7,6 +7,8 @@ public class MensajeChatDTO {
     private String content;
     private LocalDateTime createdAt;
 
+    public MensajeChatDTO() {}
+
     public MensajeChatDTO(String role, String content, LocalDateTime createdAt) {
         this.role = role;
         this.content = content;

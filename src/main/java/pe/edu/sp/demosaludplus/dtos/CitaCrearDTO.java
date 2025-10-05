@@ -12,6 +12,8 @@ public class CitaCrearDTO {
     private Integer duracionMin;
     private Integer idUsuario;
 
+    public CitaCrearDTO() {}
+
     public CitaCrearDTO(LocalDate fechaCita, LocalDateTime hora, String tipo, String estado, String motivo, Integer duracionMin, Integer idUsuario) {
         this.fechaCita = fechaCita;
         this.hora = hora;

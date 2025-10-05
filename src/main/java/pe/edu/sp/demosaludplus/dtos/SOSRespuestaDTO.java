@@ -5,6 +5,9 @@ public class SOSRespuestaDTO {
     private String idCaso;
     private String mensaje;
 
+
+    public SOSRespuestaDTO() {}
+
     public SOSRespuestaDTO(boolean ok, String idCaso, String mensaje) {
         this.ok = ok;
         this.idCaso = idCaso;
