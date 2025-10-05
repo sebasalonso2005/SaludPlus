@@ -6,10 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.EventoPeligrosoCrearDTO;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.EventoPeligrosoDTO;
-import pe.edu.upc.demoSaludPlusNuevo.entities.EventosPeligrosos;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IEventosPeligrososService;
+import pe.edu.sp.demosaludplus.dtos.EventoPeligrosoCrearDTO;
+import pe.edu.sp.demosaludplus.dtos.EventoPeligrosoDTO;
+import pe.edu.sp.demosaludplus.Entities.EventosPeligrosos;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IEventosPeligrososService;
 
 import java.time.LocalDateTime;
 import java.util.List;

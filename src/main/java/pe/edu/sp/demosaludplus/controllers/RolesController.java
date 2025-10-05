@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.RolDTO;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Roles;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IRolesService;
+import pe.edu.sp.demosaludplus.dtos.RolDTO;
+import pe.edu.sp.demosaludplus.Entities.Roles;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IRolesService;
 
 import java.util.List;
 import java.util.stream.Collectors;

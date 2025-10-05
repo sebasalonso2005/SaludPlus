@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.InicioSesionRespuestaDTO;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.InicioSesionSolicitudDTO;
+import pe.edu.sp.demosaludplus.dtos.InicioSesionRespuestaDTO;
+import pe.edu.sp.demosaludplus.dtos.InicioSesionSolicitudDTO;
 
 @RestController
 @RequestMapping("/auth")

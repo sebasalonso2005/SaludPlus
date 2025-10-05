@@ -6,10 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.ExamenCrearDTO;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.ExamenDTO;
-import pe.edu.upc.demoSaludPlusNuevo.entities.ExamenesMedicos;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IExamenesMedicosService;
+import pe.edu.sp.demosaludplus.dtos.ExamenCrearDTO;
+import pe.edu.sp.demosaludplus.dtos.ExamenDTO;
+import pe.edu.sp.demosaludplus.Entities.ExamenesMedicos;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IExamenesMedicosService;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.CitaVideollamadaDTO;
-import pe.edu.upc.demoSaludPlusNuevo.entities.CitasVideollamadas;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.ICitasVideollamadasService;
+import pe.edu.sp.demosaludplus.dtos.CitaVideollamadaDTO;
+import pe.edu.sp.demosaludplus.Entities.CitasVideollamadas;
+import pe.edu.sp.demosaludplus.servicesinterfaces.ICitasVideollamadasService;
 
 @RestController
 @RequestMapping("/citas-videollamadas")

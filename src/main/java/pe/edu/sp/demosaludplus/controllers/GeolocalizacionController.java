@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.GeolocalizacionDTO;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Geolocalizacion;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IGeolocalizacionService;
+import pe.edu.sp.demosaludplus.dtos.GeolocalizacionDTO;
+import pe.edu.sp.demosaludplus.Entities.Geolocalizacion;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IGeolocalizacionService;
 
 @RestController
 @RequestMapping("/geolocalizacion")

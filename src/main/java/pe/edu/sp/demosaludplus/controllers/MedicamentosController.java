@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.demoSaludPlusNuevo.dtos.MedicamentoDTO;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Medicamentos;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IMedicamentosService;
+import pe.edu.sp.demosaludplus.dtos.MedicamentoDTO;
+import pe.edu.sp.demosaludplus.Entities.Medicamentos;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IMedicamentosService;
 
 import java.util.List;
 import java.util.stream.Collectors;
