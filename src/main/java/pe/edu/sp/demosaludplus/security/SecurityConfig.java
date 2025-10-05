@@ -16,10 +16,9 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled = true) // Habilita seguridad a nivel de método (ej. @PreAuthorize)
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-    // Define un codificador de contraseñas (BCrypt es el recomendado)
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -31,15 +30,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable) // Deshabilita CSRF para APIs REST
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // API RESTful sin estado
-                .authorizeHttpRequests(authorize -> authorize
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        // 🔓 Swagger sin login
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        // tus rutas públicas existentes
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
                         .requestMatchers(HttpMethod.GET, "/geolocalizacion/usuario/{idUsuario}").permitAll()
                         .requestMatchers(HttpMethod.GET, "/educacion/**").permitAll()
+                        // el resto protegido
                         .anyRequest().authenticated()
-                );
+                )
+                // evita que Spring muestre formulario de login o basic auth
+                .formLogin(AbstractHttpConfigurer::disable)
+                .httpBasic(AbstractHttpConfigurer::disable);
+
         return http.build();
     }
 }
