@@ -1,12 +1,12 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
+package pe.edu.sp.demosaludplus.servicesimplements;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoSaludPlusNuevo.entities.EventosPeligrosos;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.EventosPeligrososRepository;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IEventosPeligrososService;
+import pe.edu.sp.demosaludplus.Entities.EventosPeligrosos;
+import pe.edu.sp.demosaludplus.repositories.EventosPeligrososRepository;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IEventosPeligrososService;
 
 import java.time.LocalDateTime;
 import java.util.List;

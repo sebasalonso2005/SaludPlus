@@ -1,4 +1,4 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesimplements; // O donde tengas tus servicios
+package pe.edu.sp.demosaludplus.servicesimplements; // O donde tengas tus servicios
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,9 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Roles;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Usuarios;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.UsuariosRepository;
+import pe.edu.sp.demosaludplus.Entities.Roles;
+import pe.edu.sp.demosaludplus.Entities.Usuarios;
+import pe.edu.sp.demosaludplus.repositories.UsuariosRepository;
 
 import java.util.Collection;
 import java.util.Set;

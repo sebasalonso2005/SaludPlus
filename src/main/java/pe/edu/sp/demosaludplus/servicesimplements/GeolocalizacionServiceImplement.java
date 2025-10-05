@@ -1,10 +1,10 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
+package pe.edu.sp.demosaludplus.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Geolocalizacion;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.GeolocalizacionRepository;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IGeolocalizacionService;
+import pe.edu.sp.demosaludplus.Entities.Geolocalizacion;
+import pe.edu.sp.demosaludplus.repositories.GeolocalizacionRepository;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IGeolocalizacionService;
 
 import java.util.List;
 

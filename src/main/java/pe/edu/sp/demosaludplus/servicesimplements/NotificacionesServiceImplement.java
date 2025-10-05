@@ -1,10 +1,10 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
+package pe.edu.sp.demosaludplus.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoSaludPlusNuevo.entities.Notificaciones;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.NotificacionesRepository;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.INotificacionesService;
+import pe.edu.sp.demosaludplus.Entities.Notificaciones;
+import pe.edu.sp.demosaludplus.repositories.NotificacionesRepository;
+import pe.edu.sp.demosaludplus.servicesinterfaces.INotificacionesService;
 
 import java.util.List;
 

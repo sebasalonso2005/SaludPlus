@@ -1,11 +1,11 @@
-package pe.edu.upc.demoSaludPlusNuevo.servicesimplements;
+package pe.edu.sp.demosaludplus.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.demoSaludPlusNuevo.entities.EducacionSalud;
-import pe.edu.upc.demoSaludPlusNuevo.repositories.EducacionSaludRepository;
-import pe.edu.upc.demoSaludPlusNuevo.servicesinterfaces.IEducacionSaludService;
+import pe.edu.sp.demosaludplus.Entities.EducacionSalud;
+import pe.edu.sp.demosaludplus.repositories.EducacionSaludRepository;
+import pe.edu.sp.demosaludplus.servicesinterfaces.IEducacionSaludService;
 
 import java.time.LocalDate;
 import java.util.List;
