@@ -1,25 +1,36 @@
-# ===== Etapa de build =====
-FROM maven:3.9-eclipse-temurin-17 AS build
+# ===== Build con JDK 24 y Maven Wrapper =====
+FROM eclipse-temurin:24-jdk AS build
 WORKDIR /app
 
-# Copiamos primero el pom para cachear dependencias
+# Herramientas mínimas para que mvnw descargue Maven
+RUN apt-get update && apt-get install -y curl unzip && rm -rf /var/lib/apt/lists/*
+
+# Copiamos wrapper y pom primero para cachear deps
+COPY .mvn/ .mvn/
+COPY mvnw .
 COPY pom.xml .
-RUN mvn -q -DskipTests dependency:go-offline
+
+# Permisos para el wrapper
+RUN chmod +x mvnw
+
+# Pre-descargar dependencias (cache)
+RUN ./mvnw -q -DskipTests dependency:go-offline
 
 # Ahora el código
 COPY src ./src
-RUN mvn -q -DskipTests package
 
-# ===== Etapa de runtime (ligera) =====
-FROM eclipse-temurin:17-jre
+# Compilar (si tu proyecto necesita --release 24, maven-compiler lo tomará del pom)
+RUN ./mvnw -q -DskipTests package
+
+# ===== Runtime (JRE 24 si existe, si no, JDK 24) =====
+# Algunas distribuciones aún no publican 24-jre; si falla, usa 24-jdk aquí también.
+FROM eclipse-temurin:24-jre
+# Si la etiqueta 24-jre no existe en tu registry, cambia a:
+# FROM eclipse-temurin:24-jdk
+
 WORKDIR /app
-
-# Copiamos el jar generado
 COPY --from=build /app/target/*.jar app.jar
 
-# Render suele inyectar PORT; 8080 por defecto
 ENV PORT=8080
 EXPOSE 8080
-
-# Forzamos a escuchar en 0.0.0.0 y en $PORT
 ENTRYPOINT ["java","-Dserver.port=${PORT}","-jar","/app/app.jar"]

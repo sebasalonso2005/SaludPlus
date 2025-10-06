@@ -1,20 +1,13 @@
-# Carpetas de build / IDE
 target/
 .idea/
 .vscode/
-
-# Git y wrapper pesados
 .git/
 .gitignore
 .mvn/wrapper/maven-wrapper.jar
-
-# Archivos locales que no se necesitan dentro del contenedor
 *.iml
 *.log
 *.md
 *.env
 .DS_Store
-
-# Archivos de docker/compose
 Dockerfile
 docker-compose.yml
