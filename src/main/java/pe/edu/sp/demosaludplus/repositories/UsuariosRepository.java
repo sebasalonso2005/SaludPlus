@@ -23,9 +23,9 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
 
     Page<Usuarios> findByComunidadIgnoreCase(String comunidad, Pageable pageable);
 
-    @Query("select distinct u from Usuarios u left join fetch u.roles where u.username = :username")
+    @Query(value = "select distinct u from Usuarios u left join fetch u.roles where u.username = :username", nativeQuery = true)
     Optional<Usuarios> findByUsernameConRoles(String username);
 
-    @Query("select distinct u from Usuarios u left join fetch u.roles where u.idUsuario = :idUsuario")
+    @Query(value = "select distinct u from Usuarios u left join fetch u.roles where u.idUsuario = :idUsuario", nativeQuery = true)
     Optional<Usuarios> findByIdConRoles(Integer idUsuario);
 }
